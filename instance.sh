@@ -15,6 +15,6 @@ for NAME in $@
     --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=roboshop-$NAME}]" \
     --query 'Instances[0].InstanceId' \
     --output text   
-    )
+    
     echo "Instance $NAME created successfully"
 done
