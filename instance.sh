@@ -7,7 +7,7 @@ DOMAIN_NAME="robo.lokesh23.online"
 NAME=$1
 
 for NAME in $@
-    do(
+    do
     aws ec2 run-instances \
     --image-id $AMI_ID \
     --instance-type t3.micro \
