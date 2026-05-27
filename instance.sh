@@ -6,10 +6,14 @@ DOMAIN_NAME="robo.lokesh23.online"
 
 NAME=$1
 
-aws ec2 run-instances \
---image-id $AMI_ID \
---instance-type t3.micro \
---security-groups "roboshop-common" "roboshop-$NAME" \
---tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=roboshop-$NAME}]" \
---query 'Instances[0].InstanceId' \
---output text   
+for NAME in $@
+    do(
+    aws ec2 run-instances \
+    --image-id $AMI_ID \
+    --instance-type t3.micro \
+    --security-groups "roboshop-common" "roboshop-$NAME" \
+    --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=roboshop-$NAME}]" \
+    --query 'Instances[0].InstanceId' \
+    --output text   
+    )
+    echo "Instance $NAME created successfully"
