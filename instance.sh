@@ -17,3 +17,4 @@ for NAME in $@
     --output text   
     )
     echo "Instance $NAME created successfully"
+done
